@@ -6,14 +6,14 @@ pipeline {
     stages{
         stage('Build Maven'){
             steps{
-                checkout([$class: 'GitSCM', branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/jpssasadara/iit_registration']]])
+                checkout([$class: 'GitSCM', branches: [[name: '*/develop']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/jpssasadara/iit_registration']]])
                 bat 'mvn clean install'
             }
         }
         stage('Build docker image'){
             steps{
                 script{
-                    bat 'docker build -t jps95/springboot-mongo-atlas-registration .'
+                    bat 'docker build -t jps95/springboot-mongo-atlas-registration-dev .'
                 }
             }
         }
@@ -24,7 +24,7 @@ pipeline {
                    bat 'docker login -u jps95 -p ${dockerhubpwd}'
 
 }
-                   bat 'docker push jps95/springboot-mongo-atlas-registration'
+                   bat 'docker push jps95/springboot-mongo-atlas-registration-dev'
                 }
             }
         }
