@@ -53,7 +53,7 @@
 				</configuration>
 			</plugin>
 		</plugins>
-		<finalName>springboot-mongo-atlas-registration</finalName>
+		<finalName>springboot-mongo-atlas-registration-stage</finalName>
 	</build>
 
 </project>
